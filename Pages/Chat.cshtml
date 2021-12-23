@@ -3,6 +3,9 @@
 @{
 }
 
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+<script src="Chat.js"></script>
 <div id="container" class="container-fluid">
            @*
     <aside>
@@ -26,86 +29,48 @@
                *@
     <main>
         <header>
-            <img src="~/img/fitnesstrainer.png" height="30px" width="30px">
-            <div>
-                <h2> Bernie White</h2>
-                <h3>Connected</h3>
-            </div>
+           
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
         </header>
         <ul id="chat" >
             <li class="you">
                 <div class="entete">
-                    <span class="status green"></span>
-                    <h2>Bernie</h2>
-                    <h3>10:12AM, Today</h3>
-                </div>
-                <div class="triangle"></div>
-                <div class="message">
-                   Hi!
-                </div>
+                  
             </li>
             <li class="me">
                 <div class="entete">
-                    <h3>10:12AM, Today</h3>
-                    <h2>You</h2>
-                    <span class="status blue"></span>
-                </div>
-                <div class="triangle"></div>
-                <div class="message">
-                  Good to connect with youy!
-                </div>
+                  
             </li>
             <li class="me">
                 <div class="entete">
-                    <h3>10:12AM, Today</h3>
-                    <h2>You</h2>
-                    <span class="status blue"></span>
-                </div>
-                <div class="triangle"></div>
-                <div class="message">
-                   Cant wait to get started with training
-                </div>
+                
             </li>
             <li class="you">
                 <div class="entete">
                     <span class="status green"></span>
-                    <h2>Bernie</h2>
-                    <h3>10:12AM, Today</h3>
-                </div>
-                <div class="triangle"></div>
-                <div class="message">
-                   Nice!
-                </div>
+                 
             </li>
             <li class="me">
                 <div class="entete">
-                    <h3>10:12AM, Today</h3>
-                    <h2>You</h2>
-                    <span class="status darkblue"></span>
-                </div>
-                <div class="triangle"></div>
-                <div class="message">
-                    Awesome
-                </div>
+                 
             </li>
             <li class="me">
                 <div class="entete">
-                    <h3>10:12AM, Today</h3>
-                    <h2>Yout</h2>
-                    <span class="status blue"></span>
-                </div>
-                <div class="triangle"></div>
-                <div class="message">
-                    OK
-                </div>
+            
             </li>
         </ul>
         <footer>
+          @* 
             <textarea placeholder="Type your message"></textarea>
-            
-            <a href="#">Send</a>
+            *@
+            <form onsubmit="return sendMessage();">
+               @* <input type="text" name="" id="message" class="usrmsg" size="50" textarea placeholder="Type your message" autocomplete="off" />*@
+                <textarea placeholder="Type your message" name=""  id="message-send"></textarea>
+                <a href="#" onclick="sendMessage()" name="" class="button">Send</a>
+               
+            </form>
         </footer>
+
     </main>
 </div>
 <style>
