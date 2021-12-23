@@ -3,75 +3,36 @@
 @{
 }
 
-<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
-<script src="Chat.js"></script>
-<div id="container" class="container-fluid">
-           @*
-    <aside>
-        <header>
-            <input type="text" placeholder="search">
-        </header>
-        <ul>
-               <li>
-                <img src="~/img/fitnesstrainer.png" height="30px" width="30px" alt="">
-                <div>
-                    <h2>Bernie White</h2>
-                    <h3>
-                        <span class="status green"></span>
-                        online
-                    </h3>
-                </div>
-            </li>
-          </ul>
-       
-    </aside>
-               *@
-    <main>
+<div id="chat">
+         
+    
+<body>
         <header>
            
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="">
+           test
         </header>
-        <ul id="chat" >
-            <li class="you">
-                <div class="entete">
-                  
-            </li>
-            <li class="me">
-                <div class="entete">
-                  
-            </li>
-            <li class="me">
-                <div class="entete">
-                
-            </li>
-            <li class="you">
-                <div class="entete">
-                    <span class="status green"></span>
-                 
-            </li>
-            <li class="me">
-                <div class="entete">
-                 
-            </li>
-            <li class="me">
-                <div class="entete">
+        <ul id="messages" >
             
-            </li>
         </ul>
-        <footer>
+        
           @* 
             <textarea placeholder="Type your message"></textarea>
-            *@
-            <form onsubmit="return sendMessage();">
-               @* <input type="text" name="" id="message" class="usrmsg" size="50" textarea placeholder="Type your message" autocomplete="off" />*@
                 <textarea placeholder="Type your message" name=""  id="message-send"></textarea>
                 <a href="#" onclick="sendMessage()" name="" class="button">Send</a>
-               
+            *@
+               @* <input type="text" name="" id="message" class="usrmsg" size="50" textarea placeholder="Type your message" autocomplete="off" />*@
+            <form id="message-form">
+                <input id=" message-send" type="text" />
+                <button id="message-btn" type="submit">send</button>
             </form>
-        </footer>
+       
 
-    </main>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+<script src="../Pages/chat.js"></script>
+</body>
+
+    
 </div>
 <style>
     * {

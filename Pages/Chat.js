@@ -45,6 +45,11 @@ function sendMessage(e) {
 const getChat = db.ref("message/");
 
 getChat.on("child_added", function (snapshot) {
-    
+    const messages = snapshot.val();
+    const message = <li class=${
+        username == messages.username ? "sent" : "receive"
+    }><span>$(messages.username}: </span>${messages.message}</li>
+
+    document.getElementById("messages").innerHTML += message;
 
 })
