@@ -1,6 +1,9 @@
 ﻿// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,37 +22,43 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = firebase.database();
+const db = firebase.firestore();
 
-document.getElementById("message").addEventListener("submit", sendMessage);
+document.getElementById("message-form").addEventListener("submit", sendMessage);
 
+// send message to db
 function sendMessage(e) {
     e.preventDefault();
 
+    // get values to be submitted
     const timestamp = Date.now();
-    const messageInput = document.getElementById("message-send");
+    const messageInput = document.getElementById("message-input");
     const message = messageInput.value;
 
+    // clear the input box
     messageInput.value = "";
 
+    //auto scroll to bottom
     document
-        .getElementById("message")
+        .getElementById("messages")
         .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
 
-    db.ref("message/" + timestamp).set({
+    // create db collection and send in the data
+    db.ref("messages/" + timestamp).set({
         username,
         message,
     });
 }
 
-const getChat = db.ref("message/");
+// display the messages
+// reference the collection created earlier
+const fetchChat = db.ref("messages/");
 
-getChat.on("child_added", function (snapshot) {
+// check for new messages using the onChildAdded event listener
+fetchChat.on("child_added", function (snapshot) {
     const messages = snapshot.val();
-    const message = <li class=${
-        username == messages.username ? "sent" : "receive"
-    }><span>$(messages.username}: </span>${messages.message}</li>
-
+    const message = `<li class=${username === messages.username ? "sent" : "receive"
+        }><span>${messages.username}: </span>${messages.message}</li>`;
+    // append the message on the page
     document.getElementById("messages").innerHTML += message;
-
-})
+});
