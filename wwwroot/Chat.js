@@ -1,28 +1,29 @@
 ﻿// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+//import { initializeApp } from "firebase/app";
+//import { getAnalytics } from "firebase/analytics";
+//import firebase from 'firebase/app';
+//import 'firebase/auth';
+//import 'firebase/firestore';
+//const init = require('firebase/app')
+const db = require('firebase/firestore')
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyB2Clflt1ZRRgCYF_xuVn83GDpv4VY7Dmw",
-    authDomain: "chatscreen-e27fb.firebaseapp.com",
-    projectId: "chatscreen-e27fb",
-    storageBucket: "chatscreen-e27fb.appspot.com",
-    messagingSenderId: "248623177383",
-    appId: "1:248623177383:web:f1e8a14e8666b33bbf0582",
-    measurementId: "G-TT7ZCJN2WD"
-};
-
+//const firebaseConfig = {
+   // apiKey: "AIzaSyBA4HQjz91UxQNNpJfzYexMbaIVwGn52Ps",
+   // authDomain: "test-7c0d7.firebaseapp.com",
+   // projectId: "test-7c0d7",
+  //  storageBucket: "test-7c0d7.appspot.com",
+    //messagingSenderId: "670484252112",
+   // appId: "1:670484252112:web:5fe9d1d6ea76131645e5d5"
+//};
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = firebase.firestore();
+//export.app = init.initializeApp(firebaseConfig).onRun;
+
+//var db = firebaseApp.firestore();
+var database = db.getFirestore();
 
 document.getElementById("message-form").addEventListener("submit", sendMessage);
 
