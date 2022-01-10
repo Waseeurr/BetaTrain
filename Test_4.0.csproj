@@ -18,4 +18,8 @@
     <Folder Include="Pages\Views\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Chat.js" />
+  </ItemGroup>
+
 </Project>
