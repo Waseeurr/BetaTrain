@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Test_4._0.Data.Model
 {
@@ -26,4 +27,5 @@ namespace Test_4._0.Data.Model
         public DateTime CreateDateTime { get; set; }
 
     }
+
 }

@@ -313,6 +313,17 @@ namespace Test_4._0.Data
         {
             throw new NotImplementedException();
         }
+
+        //public async Task<IReadOnlyList<Trainer>> GetAllAsync()
+        //{
+        //    var sql = "SELECT * FROM Trainer";
+        //    using (var connection = new SqlConnection(configuration.GetConnectionString("SqlServer")))
+        //    {
+        //        connection.Open();
+        //        var result = await connection.QueryAsync<Trainer>(sql);
+        //        return result.ToList();
+        //    }
+        //}
     }
 
 }

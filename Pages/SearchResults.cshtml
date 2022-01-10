@@ -1,7 +1,32 @@
 ﻿@page
+@using DapperExtensions
 @model TrainDEv.Pages.SearchResultsModel
 @{
+    var db = Database.Open("SqlServer");
+    var selectQueryString = "SELECT * FROM Trainer ORBDER BY Id";
 }
+
+   <h1>Small Bakery Products</h1>
+   <table>
+       <thead>
+           <tr>
+               <th>Id</th>
+               <th>Product</th>
+               <th>Description</th>
+       <th>Price</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach(var row in db.Query(selectQueryString)){
+            <tr>
+               <td>@row.Id</td>
+                   <td>@row.Name</td>
+                   <td>@row.Description</td>
+                   <td>@row.Price</td>
+            </tr>
+           }
+       </tbody>
+   </table>
 
 @*Font for search*@
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
