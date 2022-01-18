@@ -60,7 +60,7 @@ namespace Test_4._0.Data
 
         public DapperRepository(IConfiguration configuration)
         {
-            var sqlConnectionStr = configuration.GetSection("DbConfig:SqlServer:ConnectionString").Value;
+           var sqlConnectionStr = configuration.GetSection("DbConfig:SqlServer:ConnectionString").Value;
             _innerConn = new SqlConnection(sqlConnectionStr); ;
             _innerConn.Open();
             _innerConn.Execute("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");

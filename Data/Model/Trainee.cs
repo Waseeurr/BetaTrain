@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Test_4._0.Data.Model
 {
@@ -23,6 +25,7 @@ namespace Test_4._0.Data.Model
         [Required]
         public string Interesting { get; set; }
 
+        
 
     }
 }

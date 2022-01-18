@@ -10,12 +10,14 @@
      <br />    <br />    <br />
 
 @*Search bar*@
-<div class="wrapper">
+    <form  method="post">
+<div class="wrapper" asp-validation-summary="ModelOnly">
 	<div class="search_box">
 		<div class="search_btn"><i class="fas fa-search"></i></div>
-		<input type="text" class="input_search" placeholder="What kind of trainer are you after?">
+		<input type="text" class="input_search" placeholder="What kind of trainer are you after?" asp-for="trainers.KindOfTrainer">
 	</div>
 </div>
+        </form>
 
 <p class="filter_text" ><b>Filter by profession:</b>   
 </p>
@@ -45,7 +47,7 @@
       </div>
   </div>
 
-@*Search results*@
+@*Search results
   <table >
       <tr>
       <td> <a href="/trainer_profile"> <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" alt="user" class="user_image"/> </a>
@@ -67,6 +69,17 @@
           <br /> <p class="user_description">Mary Smith</p> <p>Language Trainer</p> </td>
   </tr>
   </table>
+    *@
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.trainers.KindOfTrainer)
+                </th>
+            </tr>
+        </thead>
+    </table>
 
   </body>
 

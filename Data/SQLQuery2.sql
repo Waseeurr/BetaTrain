@@ -51,6 +51,7 @@ CREATE TABLE [dbo].[Trainer](
 	[Location] [nvarchar](500) NOT NULL,
 	[Email] [nvarchar](50) NOT NULL,
 	[CreateDateTime] [datetime] NOT NULL,
+	[Name] [char] NOT NULL,
  CONSTRAINT [PK_Trainer] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

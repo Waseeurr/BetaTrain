@@ -25,5 +25,8 @@ namespace Test_4._0.Data.Model
         [Required]
         public DateTime CreateDateTime { get; set; }
 
+        [Required]
+        public string Name { get; set; }
+
     }
 }
