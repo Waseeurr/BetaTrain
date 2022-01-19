@@ -60,7 +60,8 @@ namespace Test_4._0.Data
 
         public DapperRepository(IConfiguration configuration)
         {
-           var sqlConnectionStr = configuration.GetSection("DbConfig:SqlServer:ConnectionString").Value;
+            //  var sqlConnectionStr = configuration.GetSection("DbConfig:SqlServer:ConnectionString = ").Value;
+            var sqlConnectionStr = "Data Source=DESKTOP-SOFAUS2\\SQLEXPRESS;Initial Catalog=db;Integrated Security=True; Connection Timeout=180";
             _innerConn = new SqlConnection(sqlConnectionStr); ;
             _innerConn.Open();
             _innerConn.Execute("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");

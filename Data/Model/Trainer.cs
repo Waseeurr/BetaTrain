@@ -28,5 +28,9 @@ namespace Test_4._0.Data.Model
         [Required]
         public string Name { get; set; }
 
+        internal List<Trainer> ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

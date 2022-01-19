@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Test_4._0.Data;
 using Test_4._0.Data.Model;
 using Dapper;
+using System.Data.SqlClient;
+
 namespace TrainDEv.Pages
 {
     public class SearchResultsModel : PageModel
@@ -17,14 +19,20 @@ namespace TrainDEv.Pages
 
         public string UserType { get; set; }
 
-        private readonly IDapperRepository<PrivacyUser> _userDapperRepository;
+        //private readonly IDapperRepository<PrivacyUser> _userDapperRepository;
         private readonly IDapperRepository<Trainee> _traineeDapperRepository;
         private readonly IDapperRepository<Trainer> _trainerDapperRepository;
+        private object FiddleHelper;
 
-        public SearchResultsModel(IDapperRepository<PrivacyUser> userDapperRepository, IDapperRepository<Trainee> traineeDapperRepository, IDapperRepository<Trainer> trainerDapperRepository)
+        /*  public SearchResultsModel(IDapperRepository<PrivacyUser> userDapperRepository, IDapperRepository<Trainee> traineeDapperRepository, IDapperRepository<Trainer> trainerDapperRepository)
+          {
+             // _userDapperRepository = userDapperRepository;
+              _traineeDapperRepository = traineeDapperRepository;
+              _trainerDapperRepository = trainerDapperRepository;
+          }*/
+
+        public SearchResultsModel(IDapperRepository<Trainer> trainerDapperRepository)
         {
-            _userDapperRepository = userDapperRepository;
-            _traineeDapperRepository = traineeDapperRepository;
             _trainerDapperRepository = trainerDapperRepository;
         }
 
@@ -35,23 +43,31 @@ namespace TrainDEv.Pages
 
 
 
-        public IActionResult OnGet()
+        public async Task OnGet()
         {
-            return Page();
+            string query = "Select * from Trainer ";
+
+            var myConnString = "Data Source=DESKTOP-SOFAUS2\\SQLEXPRESS;Initial Catalog=db;Integrated Security=True; Connection Timeout=180";
+
+            using var connection = new SqlConnection(myConnString);
+
+            return connection.Query<string>("Select * from Trainer").FirstOrDefault(
 
         }
 
-        public IActionResult OnPostSave()
+        public async Task<IActionResult> OnPostAsync()
         {
-            if(!ModelState.IsValid)
-            {
-                return Page();
-            }
-            string query = "Select * from Trainer where KindOfTrainer=''" + trainers.KindOfTrainer ;
-            var list = _userDapperRepository.GetList(query, null);
+            
 
 
-            return Page();
+
+
         }
     }
 }
+
+
+       
+
+    
+
