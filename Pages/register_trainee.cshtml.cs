@@ -52,6 +52,7 @@ namespace TrainDEv.Pages
             {
                 User.UserType = "Trainee";
                 User.FKId = traineeId;
+                User.Password = Common.GenerateMD5Hash(User.Password);
                 _userDapperRepository.Add(User);
 
                 return RedirectToPage("login_trainee");
@@ -75,7 +76,7 @@ namespace TrainDEv.Pages
             {
                 vc += nums[i].ToString();
             }
-            var returnValue= _sendMail.SendMailAsync(my, "", "PrivacyDB", "Hello"+vc).Result;
+            var returnValue= _sendMail.SendMailAsync(my, "", "TrainerPro", "Hello£¬this is your code:"+vc).Result;
             var mes = "Sent successfully";
             if (returnValue == "0")
             {
