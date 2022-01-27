@@ -14,6 +14,7 @@ using System.IO;
 using System.Reflection;
 using Test_4._0.Data;
 using Test_4._0.Data.Model;
+using Test_4._0.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Test_4._0
@@ -31,8 +32,14 @@ namespace Test_4._0
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSession();
+            services.AddHttpContextAccessor();
 
-
+            //·¢ÓÊ¼þ ×¢Èë
+            var config = new SendMailConfig();
+            Configuration.GetSection("CommonConfig:sendMessage:SendMailConfig").Bind(config);
+            services.AddSingleton(config);
+            services.AddScoped<ISendMail, SendMail>();
 
             services.AddTransient<IDapperRepository<PrivacyUser>, DapperRepository<PrivacyUser>>();
             services.AddTransient<IDapperRepository<Trainer>, DapperRepository<Trainer>>();
@@ -84,6 +91,7 @@ namespace Test_4._0
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
 
             app.UseRouting();

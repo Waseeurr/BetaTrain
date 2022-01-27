@@ -1,0 +1,317 @@
+﻿@page
+@model Test_4._0.Pages.trainer_profile_editModel
+@{
+}
+@*Font for search*@
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<body>
+    <div id="app">
+
+        <form method="post">
+            <br />    <br />    <br />
+            <table class="center">
+                <tr>
+                    <td>
+                        <img src="~/img/fitnesstrainer.png" alt="FitnessTrainer" width="300px" height="auto" class="trainer_image" />
+                        <br /> <br />
+                        <div class="wrap"><a href="#" class="button">Connect</a> </div>
+                        <br />
+                        <div class="wrap"><a href="trainer_profile_edit" class="button">Account Setting</a> </div>
+                        <br />
+                        <div class="wrap"><a href="/Chat" class="button">Send a message</a> </div>
+                        <br />
+                        <textarea type="text" class="mytxt" asp-for="Trainer.DescribeYourself" style="width:300px; height:100px;"></textarea>
+
+                    </td>
+                    <td>
+                        <input id="HiddenId" asp-for="Trainer.Id" type="hidden" />
+                        <input id="HiddenUserId" asp-for="User.Id" type="hidden" />
+
+                        <input class="mytxt" type="text" id="oText" asp-for="User.Username" placeholder="Enter User Name Here" style="width:200px; height:40px;" />
+                        <span asp-validation-for="User.Username" class="text-danger"></span>
+
+
+                        <input type="radio" v-on:click="GenderChange" :checked="GenderData=='Male'" name="gender" value="Male" />Male
+                        <input type="radio" v-on:click="GenderChange" :checked="GenderData=='Femail'" name="gender" value="Femail" />Femail
+                        <input type="radio" v-on:click="GenderChange" :checked="GenderData=='Others'" name="gender" value="Others" />Others
+                        <input id="Hidden1" asp-for="Trainer.Gender" type="hidden" />
+                        <span asp-validation-for="Trainer.Gender" class="text-danger"></span>
+
+
+                        <br />
+                        <img src="~/img/TrainerPro - Website_Health & Fitness Icon.svg" alt="fitnessicon" width="40px" height="auto" />
+                        <input class="interesting" type="checkbox" v-on:click="InterestingChange" value="Health" />Health
+                        <input class="interesting" type="checkbox" v-on:click="InterestingChange" value="Education" />Education
+                        <input class="interesting" type="checkbox" v-on:click="InterestingChange" value="Arts" />Arts
+                        <input class="interesting" type="checkbox" v-on:click="InterestingChange" value="Sports" />Sports
+                        <input class="interesting" type="checkbox" v-on:click="InterestingChange" value="Business" />Business
+                        <input id="Hidden2" asp-for="Trainer.KindOfTrainer" type="hidden" />
+                        <span asp-validation-for="Trainer.KindOfTrainer" class="text-danger"></span>
+
+                        |
+                        <input type="radio" v-on:click="TeachingTypeChange" :checked="TeachingTypeData=='In person'" name="TeachingType" value="In person" />In person
+                        <input type="radio" v-on:click="TeachingTypeChange" :checked="TeachingTypeData=='Online'" name="TeachingType" value="Online" />Online
+                        <input id="Hidden3" asp-for="Trainer.TeachingType" type="hidden" />
+                        <span asp-validation-for="Trainer.TeachingType" class="text-danger"></span>
+                        <br />
+
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+
+                        <img src="~/img/halfstar.svg" width="20px" height="auto" />
+                        37 reviews
+                        @*Biography*@
+                        <hr class="solid" />
+                        <span style="font-weight:bold; color:#32323b"> Biography </span>
+                        <br />
+                        <textarea type="text" class="mytxt" asp-for="Trainer.Certificate" style="width:600px; height:150px;"></textarea>
+                        <button  class="button" type="submit" asp-page-handler="Save" style="margin-left:700px">save</button>
+                        <hr class="solid" />
+                        <span style="font-weight:bold; color:#32323b"> Classes/Activities </span>
+                        <br />
+                        <div class="wrap"><a href="#" onClick="return false;" class="button">Personal Training</a> </div>
+                        <br />
+                        <div class="wrap"><a href="#" onClick="return false;" class="button">Swimming Coach</a> </div>
+
+                        <hr class="solid" />
+                        <span style="font-weight:bold; color:#32323b"> Recent Reviews </span>
+                        <br />
+                        “Cras vel semper dolor. Praesent egestas accumsan lorem, sed
+                        blandit enim mattis ac. Nullam purus nunc, fermentum.”
+                        <br />
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+                        <img src="~/img/fullstar.svg" width="20px" height="auto" />
+                        - John H, Trainee
+
+                        <hr class="solid" />
+                        <span style="font-weight:bold; color:#32323b"> Trainees </span>
+                        <br />
+
+                        <a href="/trainee_profile"><img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="50px" height="auto" class="user_image" /> </a>
+                        <a href="/trainee_profile"><img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="50px" height="auto" class="user_image" /> </a>
+                        <a href="/trainee_profile"><img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="50px" height="auto" class="user_image" /> </a>
+                        <a href="/trainee_profile"><img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="50px" height="auto" class="user_image" /> </a>
+                        <a href="/trainee_profile"><img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="50px" height="auto" class="user_image" /> </a>
+                        <a href="/trainee_profile"><img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="50px" height="auto" class="user_image" /> </a>
+                    </td>
+
+                </tr>
+                @*Trainer Details*@
+                <tr>
+                    <td> </td>
+                    <td>
+                        <hr class="solid" />
+                        <span style="font-weight:bold; color:#32323b"> Location </span>
+                        <img src="~/img/location.png" width="auto" height="auto" class="location" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <hr class="solid" />
+    <script src="~/js/vue.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+
+
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                GenderData: '@Model.Trainer.Gender',
+                TeachingTypeData: '@Model.Trainer.TeachingType'
+
+            },
+            methods: {
+                InterestingChange: function () {
+                    var spCodesTemp = "";
+                    $('.interesting:input:checkbox:checked').each(function (i) {
+                        if (0 == i) {
+                            spCodesTemp = $(this).val();
+                        } else {
+                            spCodesTemp += ("," + $(this).val());
+                        }
+                    });
+                    $("#Hidden2").val(spCodesTemp);
+                },
+                GenderChange: function () {
+                    var gender = $('input[name="gender"]:checked ').val();
+                    $("#Hidden1").val(gender);
+                },
+                TeachingTypeChange: function () {
+                    var TeachingType = $('input[name="TeachingType"]:checked ').val();
+                    $("#Hidden3").val(TeachingType);
+                },
+            },
+            mounted: function () {
+                 $("#Hidden2").val('@Model.Trainer.KindOfTrainer');
+                var idata = '@Model.Trainer.KindOfTrainer';
+                $('.interesting:input:checkbox').each(function (i) {
+                    if (idata.indexOf($(this).val()) >= 0) {
+                        $(this).prop("checked", true);
+                    }
+                });
+
+            },
+            created: function () {
+
+
+            }
+
+
+        })</script>
+
+
+
+</body>
+
+<style>
+        /*for testing layout*/
+        /*      table, th, td, tr {
+      border: 1px solid black;
+    }*/
+        body {
+            background-image: url('../img/TrainerProWebsiteBodyWatermark.png');
+        }
+
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trainer_image {
+            border-radius: 15px;
+        }
+
+        .user_image {
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 90px 0;
+        }
+
+        td {
+            padding: 10px 0;
+        }
+
+        /* Solid divider */
+        hr.solid {
+            border-top: 1px solid #bbb;
+        }
+
+        /*Results text*/
+        .results {
+            color: silver;
+            text-align: center;
+        }
+
+        .button {
+            width: 140px;
+            height: 50px;
+            line-height: 50px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: crimson;
+            background-color: #fff;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            outline: none;
+            text-align: center;
+            cursor: pointer;
+            display: grid;
+        }
+
+            .button:hover {
+                background-color: aliceblue;
+                box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+                color: crimson;
+            }
+
+            .button:focus {
+                background-color: lavender;
+                box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+                color: crimson;
+            }
+
+            .button:active {
+                background-color: white;
+                box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+                color: crimson;
+                transform: translateY(-7px);
+            }
+
+        .checked {
+            color: orange;
+        }
+
+    @*text*@ .mytxt {
+        color: #333;
+        line-height: normal;
+        font-family: "Microsoft YaHei",Tahoma,Verdana,SimSun;
+        font-style: normal;
+        font-variant: normal;
+        font-size-adjust: none;
+        font-stretch: normal;
+        font-weight: normal;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        padding-top: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        padding-left: 4px;
+        font-size: 15px;
+        outline-width: medium;
+        outline-style: none;
+        outline-color: invert;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        text-shadow: 0px 1px 2px #fff;
+        background-attachment: scroll;
+        background-repeat: repeat-x;
+        background-position-x: left;
+        background-position-y: top;
+        background-size: auto;
+        background-origin: padding-box;
+        background-clip: border-box;
+        background-color: rgb(255,255,255);
+        margin-right: 8px;
+        border-top-color: #ccc;
+        border-right-color: #ccc;
+        border-bottom-color: #ccc;
+        border-left-color: #ccc;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-left-style: solid;
+    }
+
+    .mytxt:focus {
+        border: 1px solid #fafafa;
+        -webkit-box-shadow: 0px 0px 6px #007eff;
+        -moz-box-shadow: 0px 0px 5px #007eff;
+        box-shadow: 0px 0px 5px #007eff;
+    }
+</style>

@@ -1,20 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Linq;
 using Test_4._0.Data;
 using Test_4._0.Data.Model;
 
-namespace TrainDEv.Pages
+namespace Test_4._0.Pages
 {
-    public class trainer_profileModel : PageModel
+    public class trainer_profile_editModel : PageModel
     {
         private readonly IDapperRepository<Trainer> _trainerDapperRepository;
         private readonly IDapperRepository<PrivacyUser> _userDapperRepository;
-        public trainer_profileModel(IDapperRepository<Trainer> trainerDapperRepository, IDapperRepository<PrivacyUser> userDapperRepository)
+        public trainer_profile_editModel(IDapperRepository<Trainer> trainerDapperRepository, IDapperRepository<PrivacyUser> userDapperRepository)
         {
             _trainerDapperRepository = trainerDapperRepository;
             _userDapperRepository = userDapperRepository;
+
         }
         [BindProperty]
         public Trainer Trainer { get; set; }
@@ -38,6 +42,22 @@ namespace TrainDEv.Pages
                 {
                     Trainer = trainer;
                 }
+            }
+        }
+        public IActionResult OnPostSave()
+        {
+            string sql = "update PrivacyUser set UserName='" + User.Username + "' where Id= " + User.Id;
+            _userDapperRepository.Execute(sql);
+            string sqlTrainer = "update Trainer set Gender='"+ Trainer .Gender+ "',KindOfTrainer='"+ Trainer.KindOfTrainer+ "',TeachingType='"+ Trainer.TeachingType+ "',DescribeYourself='"+Trainer.DescribeYourself+"' where id="+Trainer.Id;
+            var traineeId = _trainerDapperRepository.Execute(sqlTrainer);
+            if (traineeId>0)
+            {
+                return RedirectToPage("trainer_profile");
+            }
+            else
+            {
+                TempData["Message"] = "save failed, please contact the administrator";
+                return Page();
             }
         }
     }

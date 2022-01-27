@@ -26,17 +26,7 @@ namespace Test_4._0.Data.Model
         [Required]
         public DateTime CreateDateTime { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+        public string TeachingType { get; set; }
 
-        /*for json purpose later on
-
-        public override string ToString()
-        {
-        
-        JsonSerializer.Serialize<Trainer>(this);
-            return base.ToString();
-
-        } */
     }
 }
