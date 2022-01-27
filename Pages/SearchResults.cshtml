@@ -1,7 +1,8 @@
 ﻿@page
 @model TrainDEv.Pages.SearchResultsModel
-@model IEnumerable<Test_4._0.Data.Model.Trainer>
+
 @{
+   
 }
 
 @*Font for search*@
@@ -15,7 +16,7 @@
         <div class="wrapper" asp-validation-summary="ModelOnly">
             <div class="search_box">
                 <div class="search_btn"><i class="fas fa-search"></i></div>
-                <input type="text" class="input_search" placeholder="What kind of trainer are you after?" asp-for="trainers.KindOfTrainer">
+                <input type="text" asp-for=" trainer.KindOfTrainer" class="input_search" placeholder="What kind of trainer are you after?">
 
             </div>
         </div>
@@ -74,18 +75,32 @@
         </tr>
         </table>
     *@
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-
-                </th>
-            </tr>
-        </thead>
-    </table>
-
-</body>
+    @if (Model.trainers != null)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(Model => Model.trainers[0].KindOfTrainer)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model.trainers)
+                {
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(ModelItem => item.KindOfTrainer)
+                                </td>
+                            </tr>
+                }
+                    </tbody>
+                </table>
+            }
+    
+    
+ 
+    </body>
 
 <style>
 

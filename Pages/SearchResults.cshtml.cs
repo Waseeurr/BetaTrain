@@ -8,28 +8,50 @@ using Test_4._0.Data;
 using Test_4._0.Data.Model;
 using Dapper;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Data;
+using Npgsql;
+
 
 namespace TrainDEv.Pages
 {
     public class SearchResultsModel : PageModel
     {
-        [TempData]
+        /*(  public IList<Trainer>? Trainers { get; set; }
 
-        public string Message { get; set; }
+          IConfiguration c;
+          public SearchResultsModel(IConfiguration c) => this.c = c;
 
-        public string UserType { get; set; }
-
-        //private readonly IDapperRepository<PrivacyUser> _userDapperRepository;
-        private readonly IDapperRepository<Trainee> _traineeDapperRepository;
-        private readonly IDapperRepository<Trainer> _trainerDapperRepository;
-        private object FiddleHelper;
-
-        /*  public SearchResultsModel(IDapperRepository<PrivacyUser> userDapperRepository, IDapperRepository<Trainee> traineeDapperRepository, IDapperRepository<Trainer> trainerDapperRepository)
+          public async Task OnGetAsync()
           {
-             // _userDapperRepository = userDapperRepository;
-              _traineeDapperRepository = traineeDapperRepository;
-              _trainerDapperRepository = trainerDapperRepository;
-          }*/
+              var connectionString = c.GetConnectionString("Data Source=DESKTOP-SOFAUS2\\SQLEXPRESS;Initial Catalog=db;Integrated Security=True; Connection Timeout=180");
+              var data = await Db.GetThings(connectionString);
+
+              Trainers = data.ToList();
+          }
+      }
+
+          public static class Db
+          {
+              public static async Task<IEnumerable<Trainer>> GetThings(string connectionString)
+              {
+                   using var connec = GetOpenConnection(connectionString);
+
+              var result = await connec.QueryAsync<Trainer>(
+                      @"SELECT * FROM TRAINER");
+
+                   return result;
+
+              }
+
+          public static IDbConnection GetOpenConnection(string connectionString) =>
+          new NpgsqlConnection(connectionString);
+            */
+        [TempData]
+        
+        public string KindOfInterest { get; set; }
+
+        private readonly IDapperRepository<Trainer> _trainerDapperRepository;
 
         public SearchResultsModel(IDapperRepository<Trainer> trainerDapperRepository)
         {
@@ -37,34 +59,35 @@ namespace TrainDEv.Pages
         }
 
         [BindProperty]
+        public Trainer trainer { get; set; }
+        public List<Trainer> trainers { get; set; }
+       
 
-        public IList<Trainer> trainer { get; set; }
-        public Trainer trainers { get; set; }
+           
 
 
-
-        public async Task OnGet()
+       public IActionResult OnGet()
         {
-            string query = "Select * from Trainer ";
-
-            var myConnString = "Data Source=DESKTOP-SOFAUS2\\SQLEXPRESS;Initial Catalog=db;Integrated Security=True; Connection Timeout=180";
-
-            using var connection = new SqlConnection(myConnString);
-
-            return connection.Query<string>("Select * from Trainer").FirstOrDefault(
-
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            string query = "Select * from Trainer where KindOfInterest='" + trainer.KindOfTrainer+"'";
+            var list = _trainerDapperRepository.GetList(query, null);
+            if(list != null)
+            {
+                return 
+            }
+            return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
+            return Page();
+        }
             
-
-
-
-
-        }
     }
-}
+ }
 
 
        

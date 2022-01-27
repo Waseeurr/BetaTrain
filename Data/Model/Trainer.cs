@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Test_4._0.Data.Model
@@ -28,9 +29,14 @@ namespace Test_4._0.Data.Model
         [Required]
         public string Name { get; set; }
 
-        internal List<Trainer> ToList()
+        /*for json purpose later on
+
+        public override string ToString()
         {
-            throw new NotImplementedException();
-        }
+        
+        JsonSerializer.Serialize<Trainer>(this);
+            return base.ToString();
+
+        } */
     }
 }

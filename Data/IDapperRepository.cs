@@ -13,6 +13,7 @@ namespace Test_4._0.Data
     {
         IDbConnection Connection { get; }
         IDbTransaction Transaction { get; }
+       
 
         dynamic Add(T entity);
 
