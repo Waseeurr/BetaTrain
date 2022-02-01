@@ -167,7 +167,7 @@
 
 </style>
 <body>
-
+    <div id="app">
         <table height="500px" width="1200px">
 
             <tr>
@@ -185,10 +185,10 @@
                         <br />
                         <br />
                         @*<a href="Admin-trainer-management">
-                            <button class="btn"><span>Trainer Management<span></button>
-                        </a>
-                        <br />
-                        <br />*@
+                                <button class="btn"><span>Trainer Management<span></button>
+                            </a>
+                            <br />
+                            <br />*@
                         <a href="Admin-inbox">
                             <button class="btn"><span>Inbox<span></button>
                         </a>
@@ -200,162 +200,80 @@
                     </center>
                 </td>
                 <td valign="top">
-                        <h3>User list</h3>
-                        <hr />
-                        <center>
-                            <table width="90%" border="1">
-                                <tr>
-                                    <th>All User Name</th>
-                                    <th>Control</th>
-                                </tr>
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <a href="trainee_profile">
-                                            <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        </a>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
+                    <h3>User list</h3>
+                    <hr />
+                    <center>
+                        <table width="90%" border="1">
+                            <tr>
+                                <th>User Name</th>
+                                <th>Type</th>
+                                <th>Control</th>
+                            </tr>
+                            @if (Model.UserList != null && Model.UserList.Count > 0)
+                            {
+                                foreach (var item in Model.UserList)
+                                {
+                                    <tr>
+                                        <td height="40" align="center">@item.Username</td>
+                                        <td height="40" align="center">@item.UserType</td>
+                                        <td align="center">
+                                            @if (item.UserType == "Trainer")
+                                            {
+                                                <a href="Trainer_profile?id=@item.FKId" style=" width:100px;  background-color:cornflowerblue">View</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="trainee_profile?id=@item.FKId" style=" width:100px;  background-color:cornflowerblue">View</a>
+                                            }
+                                            @*<button v-on:click="viewUser(@item.Id,'@item.UserType')" style=" width:100px;  background-color:cornflowerblue">View</button>*@
+                                            <a v-on:click="deleteUser(@item.Id)" style=" width:100px; background-color:red">Delete</a>
 
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                }
+                            }
 
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td height="40" align="center">john</td>
-                                    <td align="center">
-                                        <button style=" width:100px; background-color:cornflowerblue">View</button>
-                                        <button style=" width:100px; background-color:red">Delete</button>
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </center>
+                        </table>
+                    </center>
                 </td>
             </tr>
 
         </table>
 
 
+    </div>
+    <script src="~/js/vue.js"></script>
 
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: ''
+            },
+            methods: {
+                deleteUser: function (id) {
+                    $.ajax({
+                        url: "admin?handler=DeleteUser",
+                        method: "Post",
+                        data: JSON.stringify(id),
+                        contentType: "application/json;charset=UTF-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data) {
+                                alert(data.Mes);
+                            }
+                            location.href = "admin";
+                        },
+                        error: function () {
 
+                        }
+                    });
+                },
+            },
+            mounted: function () {
 
-
-
-
-
-
-
-
-
-
-
-
-
-    @*<div class="topnav">
-            <a href="Admin-inbox">Inbox</a>
-            <a href="Admin-CSLC">Customers Sevice Live Chat</a>
-        </div>
-
-
-        <div style="width: 45%; float: right; background-image: url('../images/Background.png')">
-            <center>
-                <b>Trainer list</b>
-            </center>
-            <table width="100%" border="1">
-                <tr>
-                    <td>john</td>
-                    <td align="center">
-                        <button style=" width=50px; background-color:cornflowerblue">View</button>
-                        <button style=" width=50px; background-color:red">Delete</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>xin</td>
-                    <td align="center">
-                        <button style=" width=50px; background-color:cornflowerblue">View</button>
-                        <button style=" width=50px; background-color:red">Delete</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>rifat</td>
-                    <td align="center">
-                        <button style=" width=50px; background-color:cornflowerblue">View</button>
-                        <button style=" width=50px; background-color:red">Delete</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div style="margin-right: 55%; background-image: url('../images/Background.png') ">
-            <center>
-                <b>Trainee list</b>
-            </center>
-            <table width="100%" border="1">
-                <tr>
-                    <td>wang</td>
-                    <td align="center">
-                        <button style=" width=50px; background-color:cornflowerblue">View</button>
-                        <button style=" width=50px; background-color:red">Delete</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>navin</td>
-                    <td align="center">
-                        <button style=" width=50px; background-color:cornflowerblue">View</button>
-                        <button style=" width=50px; background-color:red">Delete</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>wasp</td>
-                    <td align="center">
-                        <button style=" width=50px; background-color:cornflowerblue">View</button>
-                        <button style=" width=50px; background-color:red">Delete</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    *@
+            },
+        });
+    </script>
 </body>
 </html>

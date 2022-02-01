@@ -23,6 +23,13 @@ namespace Test_4._0.Data.Model
         [Required]
         public string Interesting { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        }
+
+    public class TraineeList: Trainee
+    {
+        public string Status { get; set; }
 
     }
 }

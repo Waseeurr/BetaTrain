@@ -9,64 +9,68 @@
 <body>
     <br />    <br />    <br />
 
-    @*Search bar*@
-    <div class="wrapper">
-        <div class="search_box">
-            <div class="search_btn"><i class="fas fa-search"></i></div>
-            <input type="text" class="input_search" placeholder="What kind of trainer are you after?">
-        </div>
-    </div>
+    <div id="app">
+        <form action=" " method="post">
+            <div class="wrapper">
+                <div class="search_box">
+                    <a class="search_btn" v-on:click="SeachClick"><i class="fas fa-search"></i></a>
+                    <input type="text" id="input_search" asp-for="Trainer.KindOfTrainer" class="input_search" placeholder="What kind of trainer are you after?">
+                </div>
+            </div>
 
-    <p class="filter_text">
-        <b>Filter by profession:</b>
-    </p>
-    <table class="center">
-        <tr>
-            <td class="filter_button"> <img src="~/img/TrainerPro - Website_Health & Fitness Icon.svg" alt="Health&Fitness" width="64px" height="auto" id="health" onclick="filter_click('health');" /> <br />Health</td>
-            <td class="filter_button"> <img src="~/img/TrainerPro - Website_Arts & Entertainment Icon.svg" alt="Arts&Ent" width="64px" height="auto" id="arts" onclick="filter_click('arts');" /> <br />Arts</td>
-            <td class="filter_button"> <img src="~/img/TrainerPro - Website_Education & Languages Icon.svg" alt="Edu&Lang" width="64px" height="auto" id="education" onclick="filter_click('education');" /> <br />Education</td>
-            <td class="filter_button"> <img src="~/img/TrainerPro - Website_Health & Beauty Icon.svg" alt="Heal&Bea" width="64px" height="auto" id="beauty" onclick="filter_click('beauty');" /> <br />Beauty</td>
-            <td class="filter_button"> <img src="~/img/TrainerPro - Website_Business & Technology Icon.svg" alt="Bus&Tech" width="64px" height="auto" id="tech" onclick="filter_click('tech');" /> <br />Technology </td>
-        </tr>
-    </table>
+            <p class="filter_text">
+                <b>Filter by profession:</b>
+            </p>
+            <table class="center">
+                <tr>
+                    <input id="Hidden3" asp-for="Trainer.KindOfTrainer" type="hidden" />
+                    <td class="filter_button"> <img src="~/img/TrainerPro - Website_Health & Fitness Icon.svg" alt="Health&Fitness" width="64px" height="auto" id="health" v-on:click="filter_click('Health');" /> <br />Health</td>
+                    <td class="filter_button"> <img src="~/img/TrainerPro - Website_Arts & Entertainment Icon.svg" alt="Arts&Ent" width="64px" height="auto" id="arts" v-on:click="filter_click('Arts');" /> <br />Arts</td>
+                    <td class="filter_button"> <img src="~/img/TrainerPro - Website_Education & Languages Icon.svg" alt="Edu&Lang" width="64px" height="auto" id="education" v-on:click="filter_click('Education');" /> <br />Education</td>
+                    <td class="filter_button"> <img src="~/img/TrainerPro - Website_Health & Beauty Icon.svg" alt="Heal&Bea" width="64px" height="auto" id="beauty" v-on:click="filter_click('Beauty');" /> <br />Beauty</td>
+                    <td class="filter_button"> <img src="~/img/TrainerPro - Website_Business & Technology Icon.svg" alt="Bus&Tech" width="64px" height="auto" id="tech" v-on:click="filter_click('Technology');" /> <br />Technology </td>
+                </tr>
+            </table>
 
-    <hr class="solid" />
+            <hr class="solid" />
 
-    <p class="results">
-        Showing results for: <b>sample</b> located in <b>sample, postcode, state</b>
-    </p>
-    @*Filter Dropdown*@
-    <div class="dropdown">
-        <button class="dropbtn">Filter by distance</button>
-        <div class="dropdown-content">
-            <a href="#">5km</a>
-            <a href="#">10km</a>
-            <a href="#">15km</a>
-            <a href="#">20km</a>
-            <a href="#">25km</a>
-        </div>
-    </div>
+            <p class="results">
+                Showing results for: <b>sample</b> located in <b>sample, postcode, state</b>
+            </p>
+            <div class="dropdown">
+                <input id="Hidden2" asp-for="Trainer.Gender" type="hidden" />
+                <select class="dropbtn" id="codeSelect2" v-on:change="selectGFn($event)">
+                    <option value="">both</option>
+                    <option value="Femail">Female</option>
+                    <option value="Male">Male</option>
 
-    <div class="dropdown">
-        <button class="dropbtn">Filter by Gender</button>
-        <div class="dropdown-content">
-            <a value="female">female</a>
-            <a value="male">male</a>
-            <a value="">both</a>
-        </div>
-    </div>
+                </select>
+            </div>
 
-    <div class="dropdown">
-        <button class="dropbtn">Filter by Teaching Type</button>
-        <div class="dropdown-content">
-            <a value="In person">In person</a>
-            <a value="Online">Online</a>
-            <a value="">both</a>
-        </div>
+            <div class="dropdown">
+                <input id="Hidden1" asp-for="Trainer.TeachingType" type="hidden" />
+                <select class="dropbtn" id="codeSelect1" v-on:change="selectTFn($event)">
+                    <option value="">both</option>
+                    <option value="In person">In person</option>
+                    <option value="Online">Online</option>
+
+                </select>
+            </div>
+            <div style="min-height:250px;">
+                <div style="width:240px;height:240px;float:left;margin:10px;" v-for="(item,key) in modelValue">
+                    <a :href="'/trainer_profile?id='+item.Id"> <img :src="item.ImageUrl" style="width:190px;height:190px" alt="user" class="user_image" /> </a>
+                    <br />
+                    <p class="user_description">{{item.Username}}</p>
+                    <p>
+                        {{item.DescribeYourself}}
+                    </p>
+                </div>
+            </div>
+        </form>
     </div>
 
     @*Search results*@
-    <table>
+    <!--<table>
         <tr>
             <td>
                 <a href="/trainer_profile"> <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" alt="user" class="user_image" /> </a>
@@ -98,7 +102,113 @@
                 <br /> <p class="user_description">Mary Smith</p> <p>Language Trainer</p>
             </td>
         </tr>
-    </table>
+    </table>-->
+
+    <script src="~/js/vue.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                modelValue: [],
+                modelT: { KindOfTrainer: '', Gender: '', TeachingType: '' },
+            },
+            methods: {
+                filter_click: function (typename) {
+                    var returnData = this;
+                    returnData.modelT.KindOfTrainer = typename;
+                    $.ajax({
+                        url: "?handler=Seach",
+                        method: "Post",
+                        data: JSON.stringify(returnData.modelT),
+                        contentType: "application/json;charset=UTF-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data) {
+                                returnData.modelValue = data;
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+                },
+                SeachClick: function () {
+                    var value = $("#input_search").val();
+                    var returnData = this;
+                    returnData.modelT.KindOfTrainer = value;
+                    $.ajax({
+                        url: "?handler=Seach",
+                        method: "Post",
+                        data: JSON.stringify(returnData.modelT),
+                        contentType: "application/json;charset=UTF-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data) {
+                                returnData.modelValue = data;
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+                },
+                selectGFn: function (e) {
+                    //var value= e.target.value;
+                    var returnData = this;
+                    returnData.modelT.Gender = e.target.value;
+                    $.ajax({
+                        url: "?handler=Seach",
+                        method: "Post",
+                        data: JSON.stringify(returnData.modelT),
+                        contentType: "application/json;charset=UTF-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data) {
+                                returnData.modelValue = data;
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+                },
+                selectTFn: function (e) {
+                    var returnData = this;
+                    returnData.modelT.TeachingType = e.target.value;
+                    $.ajax({
+                        url: "?handler=Seach",
+                        method: "Post",
+                        data: JSON.stringify(returnData.modelT),
+                        contentType: "application/json;charset=UTF-8",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data) {
+                                returnData.modelValue = data;
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+                },
+            },
+            mounted: function () {
+                var returnData = this;
+                //returnData.modelT.TeachingType = e.target.value;
+                $.ajax({
+                    url: "?handler=Seach",
+                    method: "Post",
+                    data: JSON.stringify(returnData.modelT),
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) {
+                            returnData.modelValue = data;
+                        }
+                    },
+                    error: function () {
+                    }
+                });
+            }
+        })</script>
 
 </body>
 
@@ -264,7 +374,7 @@ cursor: pointer;
 }
 </style>
 
-<script>
+@*<script>
     function filter_click(id){
         var button = document.getElementById(id).style.filter;
         if (button == "grayscale(0%)"){
@@ -274,4 +384,4 @@ cursor: pointer;
         document.getElementById(id).style.filter = "grayscale(0%)"
         }
     }
-</script>
+</script>*@
