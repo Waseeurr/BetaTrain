@@ -176,7 +176,7 @@
             <tr>
                 <td style="width:400px" >
                     <center>
-                        <img src="~/images/trainee_photo.jpg" />
+                        <img src='@Model.Trainee.ImageUrl' style="width:300px;height:300px;" />
                         <br />
                         <br />
                         <a href="trainee_profile">
@@ -235,139 +235,131 @@
                     <p>@*<label asp-for="Trainee."></label>*@</p>
                     <br />
 
-                    <a href="trainee_profile_link_click"><img src="~/img/fitnesstrainer.png" width="60" height="50" /></a>丨
-                    <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />丨
-                    <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />
-                    <a href="SearchResults">
-                        <button class="fbtn" style="margin-left:300px">Find trainer</button>
-                    </a>
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <center>
-                        <table border="1" width="800" height="300">
-                            <tr align="center" >
-                                <th colspan="7" style="color: white; background: lightblue;">
-                                    December 2021
-                                </th>
-                            </tr>
+                    @*<a href="trainee_profile_link_click"><img src="~/img/fitnesstrainer.png" width="60" height="50" /></a>丨*@
 
-                            <tr align="center">
-                                <th style="color: white; background: lightblue;">Su</th>
-                                <th style="color: white; background: lightblue;">Mo</th>
-                                <th style="color: white; background: lightblue;">Tu</th>
-                                <th style="color: white; background: lightblue;">We</th>
-                                <th style="color: white; background: lightblue;">Th</th>
-                                <th style="color: white; background: lightblue;">Fr</th>
-                                <th style="color: white; background: lightblue;">Sa</th>
-                            </tr>
+                    @if (Model.Trainers != null)
+                    {
+                        foreach (var item in Model.Trainers)
+                        {
+                            <a href="trainee_profile_link_click"><img src="@item.ImageUrl" width="60" height="50" /> |</a>
+                        }
+                    }
 
-                            <tr align="center">
-                                <td height="100" width="100">28</td>
-                                <td height="100" width="100">29</td>
-                                <td height="100" width="100">30</td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                1<br />
-                                <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="40" height="40" />
-                                </td>
-                                <td height="100" width="100" bgcolor="#FF3300">2</td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                3<br />
-                                <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                4<br />
-                                <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                            </tr>
+                    @*<img src="~/img/fitnesstrainer.png" width="60" height="50" /></a>丨
+                        <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />丨
+                        <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />*@
+                        <a href="SearchResults">
+                            <button class="fbtn" style="margin-left:300px">Find trainer</button>
+                        </a>
+                        <hr />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <center>
+                            <table border="1" width="800" height="300">
+                                <tr align="center" >
+                                    <th colspan="7" style="color: white; background: lightblue;">
+                                        December 2021
+                                    </th>
+                                </tr>
 
-                            <tr align="center">
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                    5<br />
+                                <tr align="center">
+                                    <th style="color: white; background: lightblue;">Su</th>
+                                    <th style="color: white; background: lightblue;">Mo</th>
+                                    <th style="color: white; background: lightblue;">Tu</th>
+                                    <th style="color: white; background: lightblue;">We</th>
+                                    <th style="color: white; background: lightblue;">Th</th>
+                                    <th style="color: white; background: lightblue;">Fr</th>
+                                    <th style="color: white; background: lightblue;">Sa</th>
+                                </tr>
+
+                                <tr align="center">
+                                    <td height="100" width="100">28</td>
+                                    <td height="100" width="100">29</td>
+                                    <td height="100" width="100">30</td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                    1<br />
                                     <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                                <td height="100" width="100" bgcolor="#FF3300">6</td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                    7<br />
+                                    <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="40" height="40" />
+                                    </td>
+                                    <td height="100" width="100" bgcolor="#FF3300">2</td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                    3<br />
                                     <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                    8<br />
+                                    </td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                    4<br />
                                     <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                                <td height="100" width="100" bgcolor="#FF3300">9</td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                    10<br />
-                                    <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                                <td height="100" width="100" bgcolor="#00FF00">
-                                    11<br />
-                                    <img src="~/img/fitnesstrainer.png" width="40" height="40" />
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
 
-                            <tr align="center">
-                                <td height="100" width="100" bgcolor="#FF3300">12</td>
-                                <td height="100" width="100">13</td>
-                                <td height="100" width="100">14</td>
-                                <td height="100" width="100">15</td>
-                                <td height="100" width="100">16</td>
-                                <td height="100" width="100">17</td>
-                                <td height="100" width="100">18</td>
-                            </tr>
+                                <tr align="center">
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                        5<br />
+                                        <img src="~/img/fitnesstrainer.png" width="40" height="40" />
+                                    </td>
+                                    <td height="100" width="100" bgcolor="#FF3300">6</td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                        7<br />
+                                        <img src="~/img/fitnesstrainer.png" width="40" height="40" />
+                                    </td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                        8<br />
+                                        <img src="~/img/fitnesstrainer.png" width="40" height="40" />
+                                    </td>
+                                    <td height="100" width="100" bgcolor="#FF3300">9</td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                        10<br />
+                                        <img src="~/img/fitnesstrainer.png" width="40" height="40" />
+                                    </td>
+                                    <td height="100" width="100" bgcolor="#00FF00">
+                                        11<br />
+                                        <img src="~/img/fitnesstrainer.png" width="40" height="40" />
+                                    </td>
+                                </tr>
 
-                            <tr align="center">
-                                <td height="100" width="100">19</td>
-                                <td height="100" width="100">20</td>
-                                <td height="100" width="100">21</td>
-                                <td height="100" width="100">22</td>
-                                <td height="100" width="100">23</td>
-                                <td height="100" width="100">24</td>
-                                <td height="100" width="100">25</td>
-                            </tr>
+                                <tr align="center">
+                                    <td height="100" width="100" bgcolor="#FF3300">12</td>
+                                    <td height="100" width="100">13</td>
+                                    <td height="100" width="100">14</td>
+                                    <td height="100" width="100">15</td>
+                                    <td height="100" width="100">16</td>
+                                    <td height="100" width="100">17</td>
+                                    <td height="100" width="100">18</td>
+                                </tr>
 
-                            <tr align="center">
-                                <td height="100" width="100">26</td>
-                                <td height="100" width="100">27</td>
-                                <td height="100" width="100">28</td>
-                                <td height="100" width="100">29</td>
-                                <td height="100" width="100">30</td>
-                                <td height="100" width="100">31</td>
-                                <td height="100" width="100">1</td>
-                            </tr>
+                                <tr align="center">
+                                    <td height="100" width="100">19</td>
+                                    <td height="100" width="100">20</td>
+                                    <td height="100" width="100">21</td>
+                                    <td height="100" width="100">22</td>
+                                    <td height="100" width="100">23</td>
+                                    <td height="100" width="100">24</td>
+                                    <td height="100" width="100">25</td>
+                                </tr>
 
-                        </table>
-                    </center>
+                                <tr align="center">
+                                    <td height="100" width="100">26</td>
+                                    <td height="100" width="100">27</td>
+                                    <td height="100" width="100">28</td>
+                                    <td height="100" width="100">29</td>
+                                    <td height="100" width="100">30</td>
+                                    <td height="100" width="100">31</td>
+                                    <td height="100" width="100">1</td>
+                                </tr>
 
-
-                </td>
-            </tr>
-
-        </table>
-    </center>
-
-
-
-
-
-
-
-
-
-
-
+                            </table>
+                        </center>
 
 
+                    </td>
+                </tr>
 
-
-
-
-
+            </table>
+        </center>
 
 
 
@@ -383,94 +375,112 @@
 
 
 
-    @*<center>
-        <img src="~/images/trainee_photo.jpg" />
-        <a href="trainee_profile_edit"><button style="margin-left:400px">Edit</button></a>
-    </center>
-    <center>
 
-        <p align="left" style="margin-left:430px">User name:John</p>
-        <p align="left" style="margin-left:430px">Gender:Male</p>
-        <p align="left" style="margin-left:430px">Email:12345678@gmail.com</p>
-        <p align="left" style="margin-left:430px">Phone:1234567890</p>
-        <p align="left" style="margin-left:430px">i am interesting in:Sports</p>
-        <p align="left" style="margin-left:430px">Location:city.......123</p>
-        <p align="left" style="margin-left:430px">I linked with:</p>
 
-        <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />丨
-        <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />
-    </center>
-    <hr />
 
-    <center>
-        <table border="1" width="600" height="200">
-            <tr align="center">
-                <th colspan="7">
-                    December 2021
-                </th>
-            </tr>
 
-            <tr align="center">
-                <th>Su</th>
-                <th>Mo</th>
-                <th>Tu</th>
-                <th>We</th>
-                <th>Th</th>
-                <th>Fr</th>
-                <th>Sa</th>
-            </tr>
 
-            <tr align="center">
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-                <td bgcolor="#00FF00">1</td>
-                <td bgcolor="#FF3300">2</td>
-                <td bgcolor="#00FF00">3</td>
-                <td bgcolor="#00FF00" 4</td>
-            </tr>
 
-            <tr align="center">
-                <td bgcolor="#00FF00">5</td>
-                <td bgcolor="#FF3300">6</td>
-                <td bgcolor="#00FF00">7</td>
-                <td bgcolor="#00FF00">8</td>
-                <td bgcolor="#FF3300">9</td>
-                <td bgcolor="#00FF00">10</td>
-                <td bgcolor="#00FF00">11</td>
-            </tr>
 
-            <tr align="center">
-                <td bgcolor="#FF3300">12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-            </tr>
 
-            <tr align="center">
-                <td>19</td>
-                <td>20</td>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-                <td>25</td>
-            </tr>
 
-            <tr align="center">
-                <td>26</td>
-                <td>27</td>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-                <td>31</td>
-                <td>1</td>
-            </tr>
 
-        </table>
-    </center>*@
+
+
+
+
+
+
+
+
+        @*<center>
+            <img src="~/images/trainee_photo.jpg" />
+            <a href="trainee_profile_edit"><button style="margin-left:400px">Edit</button></a>
+        </center>
+        <center>
+
+            <p align="left" style="margin-left:430px">User name:John</p>
+            <p align="left" style="margin-left:430px">Gender:Male</p>
+            <p align="left" style="margin-left:430px">Email:12345678@gmail.com</p>
+            <p align="left" style="margin-left:430px">Phone:1234567890</p>
+            <p align="left" style="margin-left:430px">i am interesting in:Sports</p>
+            <p align="left" style="margin-left:430px">Location:city.......123</p>
+            <p align="left" style="margin-left:430px">I linked with:</p>
+
+            <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />丨
+            <img src="~/img/TrainerPro - Website_Image User Placeholder.jpg" width="60" height="50" />
+        </center>
+        <hr />
+
+        <center>
+            <table border="1" width="600" height="200">
+                <tr align="center">
+                    <th colspan="7">
+                        December 2021
+                    </th>
+                </tr>
+
+                <tr align="center">
+                    <th>Su</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                </tr>
+
+                <tr align="center">
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td bgcolor="#00FF00">1</td>
+                    <td bgcolor="#FF3300">2</td>
+                    <td bgcolor="#00FF00">3</td>
+                    <td bgcolor="#00FF00" 4</td>
+                </tr>
+
+                <tr align="center">
+                    <td bgcolor="#00FF00">5</td>
+                    <td bgcolor="#FF3300">6</td>
+                    <td bgcolor="#00FF00">7</td>
+                    <td bgcolor="#00FF00">8</td>
+                    <td bgcolor="#FF3300">9</td>
+                    <td bgcolor="#00FF00">10</td>
+                    <td bgcolor="#00FF00">11</td>
+                </tr>
+
+                <tr align="center">
+                    <td bgcolor="#FF3300">12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                </tr>
+
+                <tr align="center">
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                </tr>
+
+                <tr align="center">
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td>1</td>
+                </tr>
+
+            </table>
+        </center>*@
 </body>
 </html>

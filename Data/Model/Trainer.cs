@@ -26,6 +26,12 @@ namespace Test_4._0.Data.Model
         public DateTime CreateDateTime { get; set; }
 
         public string TeachingType { get; set; }
+        public string ImageUrl { get; set; }
 
     }
-}
+    public class Trainers: Trainer
+    {
+        public string Username { get; set; }
+    }
+
+    }

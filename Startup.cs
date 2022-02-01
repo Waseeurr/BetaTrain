@@ -31,6 +31,7 @@ namespace Test_4._0
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddControllers();
             services.AddSession();
             services.AddHttpContextAccessor();
@@ -44,6 +45,7 @@ namespace Test_4._0
             services.AddTransient<IDapperRepository<PrivacyUser>, DapperRepository<PrivacyUser>>();
             services.AddTransient<IDapperRepository<Trainer>, DapperRepository<Trainer>>();
             services.AddTransient<IDapperRepository<Trainee>, DapperRepository<Trainee>>();
+            services.AddTransient<IDapperRepository<Linked>, DapperRepository<Linked>>();
 
             #region Swagger
             services.AddSwaggerGen(options =>

@@ -121,7 +121,7 @@
 <body>
     <center>
         <div id="app">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <table height="500px" width="1200px">
 
                     <tr align="center">
@@ -132,7 +132,12 @@
                     <tr>
                         <td style="width:400px">
                             <center>
-                                <img src="~/images/trainee_photo.jpg" />
+                                <input id="HiddenUrl" asp-for="Trainee.ImageUrl" type="hidden" />
+                                @*<img src="~/images/trainee_photo.jpg" />*@
+                                <img src='@Model.Trainee.ImageUrl' style="width:300px;height:300px;" />
+                                @*<label asp-for="FlieUpload.FormFile" class="control-label"></label>*@
+                                <input asp-for="FlieUpload.FormFile" type="file" class="form-control" style="height: auto; width: 300px;" />
+                                <span asp-validation-for="FlieUpload.FormFile" class="text-danger"></span>
                                 <br />
                                 <br />
                                 <a href="trainee_profile">

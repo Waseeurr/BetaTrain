@@ -8,12 +8,14 @@
 <body>
     <div id="app">
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <br />    <br />    <br />
             <table class="center">
                 <tr>
                     <td>
-                        <img src="~/img/fitnesstrainer.png" alt="FitnessTrainer" width="300px" height="auto" class="trainer_image" />
+                        <img src='@Model.Trainer.ImageUrl' style="width:300px;height:300px;" />
+                        <input asp-for="FlieUpload.FormFile" type="file" class="form-control" style="height: auto; width: 300px;" />
+                        <span asp-validation-for="FlieUpload.FormFile" class="text-danger"></span>
                         <br /> <br />
                         <div class="wrap"><a href="#" class="button">Connect</a> </div>
                         <br />
@@ -71,7 +73,7 @@
                         <span style="font-weight:bold; color:#32323b"> Biography </span>
                         <br />
                         <textarea type="text" class="mytxt" asp-for="Trainer.Certificate" style="width:600px; height:150px;"></textarea>
-                        <button  class="button" type="submit" asp-page-handler="Save" style="margin-left:700px">save</button>
+                        <button class="button" type="submit" asp-page-handler="Save" style="margin-left:700px">save</button>
                         <hr class="solid" />
                         <span style="font-weight:bold; color:#32323b"> Classes/Activities </span>
                         <br />
