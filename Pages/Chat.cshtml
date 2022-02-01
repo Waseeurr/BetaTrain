@@ -3,37 +3,100 @@
 @{
 }
 
-<div id="chat">
-         
+
+
+@*
+    <body>
+            <header>
+
+               test
+            </header>
+    <div id="chat">
+            <ul id="messages" >
+
+            </ul>
+
+
+                //old chat model
+                <textarea placeholder="Type your message"></textarea>
+                    <textarea placeholder="Type your message" name=""  id="message-send"></textarea>
+                    <a href="#" onclick="sendMessage()" name="" class="button">Send</a>
+                   @* <input type="text" name="" id="message" class="usrmsg" size="50" textarea placeholder="Type your message" autocomplete="off" />
+                  //end
+        <footer>
+                <form id="message-form">
+                    <input id="message-send" type="text" />
+                    <button id="message-btn" type="submit">send</button>
+                </form>
+        </footer>
+
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="../Pages/chat.js"></script>
+    </body>
+
+
+
+*@
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+   // import { doc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+   // import { getFirestore } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyBA4HQjz91UxQNNpJfzYexMbaIVwGn52Ps",
+        authDomain: "test-7c0d7.firebaseapp.com",
+        projectId: "test-7c0d7",
+        storageBucket: "test-7c0d7.appspot.com",
+        messagingSenderId: "670484252112",
+        appId: "1:670484252112:web:5fe9d1d6ea76131645e5d5"
+    };
     
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+   // const db = getFirestore();
+     
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Firebase RealTime Chat</title>
+   
+</head>
 <body>
-        <header>
-           
-           test
-        </header>
-        <ul id="messages" >
-            
-        </ul>
-        
-          @* 
-            <textarea placeholder="Type your message"></textarea>
-                <textarea placeholder="Type your message" name=""  id="message-send"></textarea>
-                <a href="#" onclick="sendMessage()" name="" class="button">Send</a>
-            *@
-               @* <input type="text" name="" id="message" class="usrmsg" size="50" textarea placeholder="Type your message" autocomplete="off" />*@
-            <form id="message-form">
-                <input id=" message-send" type="text" />
-                <button id="message-btn" type="submit">send</button>
-            </form>
-       
+    <header>
+        <h2>Firebase RealTime Chat</h2>
+    </header>
 
-<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
-<script src="../Pages/chat.js"></script>
+    <div id="chat">
+        <!-- messages will display here -->
+        <ul id="messages"></ul>
+
+        <!-- form to send message -->
+        <form id="message-form">
+            <input id="message-input" type="text" />
+            <button id="message-btn" type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="Chat.js"></script>
 </body>
-
-    
-</div>
+</html>
 <style>
     * {
         box-sizing: border-box;
@@ -42,16 +105,16 @@
 
     body {
         background-image: url('../images/Background.png');
-       
+
         font-family: Arial;
-        
+
     }
 
     #container {
         width: 750px;
         height: 800px;
         background-image: url('../images/Background.png');
-       
+
         margin: 0 auto;
         font-size: 0;
         border-radius: 5px;
@@ -73,7 +136,7 @@
         display: inline-block;
         font-size: 15px;
         vertical-align: top;
-        
+
     }
 
     @*
@@ -214,7 +277,7 @@
         height: 535px;
         border-top: 2px solid #fff;
         border-bottom: 2px solid #fff;
-        
+
     }
 
         #chat li {
@@ -277,7 +340,7 @@
     main footer {
         height: 155px;
         padding: 20px 30px 10px 20px;
-        
+
     }
 
         main footer textarea {
